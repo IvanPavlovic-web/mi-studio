@@ -250,19 +250,8 @@ function sendEmail(e) {
 
   window.location.href = `mailto:breda@mi-studio.org?subject=${subject}&body=${body}`;
 }
-document.addEventListener("DOMContentLoaded", function () {
-  const lazyImages = document.querySelectorAll("img.lazy");
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.classList.add("loaded");
-        observer.unobserve(img);
-      }
-    });
-  });
 
   lazyImages.forEach((img) => observer.observe(img));
 });
+
