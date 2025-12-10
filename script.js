@@ -252,6 +252,3 @@ function sendEmail(e) {
 }
 
 
-  lazyImages.forEach((img) => observer.observe(img));
-});
-
