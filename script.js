@@ -250,5 +250,3 @@ function sendEmail(e) {
 
   window.location.href = `mailto:breda@mi-studio.org?subject=${subject}&body=${body}`;
 }
-
-
