@@ -10,15 +10,17 @@ body {
   overflow-x: hidden;
 }
 
+/* OPTIMIZOVANA ANIMACIJA - manje agresivna */
 .autoShow {
   animation: autoShowAnimation both;
   animation-timeline: view(70% 5%);
+  will-change: transform, opacity;
 }
 
 @keyframes autoShowAnimation {
   from {
     opacity: 0;
-    transform: translateY(200px) scale(0.3);
+    transform: translateY(80px) scale(0.85);
   }
   to {
     opacity: 1;
@@ -262,10 +264,12 @@ h1 {
   margin: 0 auto;
 }
 
+/* OPTIMIZOVANI GALLERY ITEM */
 .gallery-item {
   position: relative;
   overflow: hidden;
   border-radius: 12px;
+  /* Uklonjen will-change da ne bude stalno aktivan */
 }
 
 .gallery-item img {
@@ -273,9 +277,11 @@ h1 {
   height: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Dodaj loading="lazy" u HTML-u za slike */
 }
 
+/* Pojednostavljen overlay - manje GPU opterećenje */
 .gallery-item::after {
   content: "";
   position: absolute;
@@ -283,16 +289,22 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.2)
-  );
+  background: rgba(0, 0, 0, 0.15);
   pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover::after {
+  opacity: 0;
+}
+
+.gallery-item:hover {
+  /* will-change se aktivira samo na hover */
+  will-change: transform;
 }
 
 .gallery-item:hover img {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .cta-section {
@@ -819,5 +831,23 @@ h1 {
   .slide {
     width: 180px;
     height: 320px;
+  }
+}
+
+/* DODATNA OPTIMIZACIJA ZA SMOOTH SCROLLING */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Disable animacije za korisnike koji preferiraju manje pokreta */
+@media (prefers-reduced-motion: reduce) {
+  .autoShow {
+    animation: none;
+  }
+
+  .gallery-item img {
+    transition: none;
   }
 }
