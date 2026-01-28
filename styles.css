@@ -302,7 +302,7 @@ h1 {
 
 .cta-container {
   position: relative;
-  background: url("assets/cta.png") center/cover no-repeat;
+  background: url("assets/cta.webp") center/cover no-repeat;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
@@ -391,7 +391,9 @@ h1 {
   cursor: pointer;
   font-size: 16px;
   font-weight: 700;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .btn-primary:hover {
@@ -409,7 +411,9 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .btn-phone:hover {
@@ -435,11 +439,11 @@ h1 {
 }
 
 .footer-bg-top {
-  background-image: url("assets/foot-top.png");
+  background-image: url("assets/foot-top.webp");
 }
 
 .footer-bg-bottom {
-  background-image: url("assets/foot-bot.png");
+  background-image: url("assets/foot-bot.webp");
 }
 
 .footer-inner {
@@ -473,7 +477,9 @@ h1 {
   color: #fff;
   font-size: 14px;
   text-transform: uppercase;
-  transition: color 0.35s ease, transform 0.25s ease;
+  transition:
+    color 0.35s ease,
+    transform 0.25s ease;
 }
 
 .footer-socials a:hover {
